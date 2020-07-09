@@ -55,6 +55,15 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		<!--Validations -->
+		<dependency>
+			<groupId>org.hibernate.validator</groupId>
+			<artifactId>hibernate-validator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.assertj</groupId>
+			<artifactId>assertj-core</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>

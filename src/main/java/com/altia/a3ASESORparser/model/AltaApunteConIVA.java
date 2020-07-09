@@ -2,46 +2,46 @@ package com.altia.a3ASESORparser.model;
 
 import lombok.Data;
 
-import javax.validation.constraints.Size;
 import java.util.Collections;
 
 @Data
-public class AltaApunteSinIVA extends Registro {
+public class AltaApunteConIVA extends Registro {
 
-    @Size(min=6, max=12)
     private String cuenta;
-    @Size(max=30)
     private String descripcionCuenta;
-    private TipoImporte tipoImporte;
-    @Size(max=10)
-    private String referenciaDocumento;
+    private TipoFactura tipoFactura;
+    private int numeroFactura;
     private LineaApunte lineaApunte;
-    @Size(max=30)
     private String descripcionApunte;
     private double importe;
     //reserva
-    private boolean asientoNomina;
-    private boolean registroAnalitico;
+    private String nifCliente;
+    private String nombreCliente;
+    private int codigoPostal;
+    //reserva
+    private int fechaOperacion;
+    private int fechaFactura;
+    private int numeroFacturaAmpliado;
     //reserva
     private Moneda moneda;
 
-    public AltaApunteSinIVA() {
+    public AltaApunteConIVA() {
         super();
-        tipoRegistro = 0;
+        tipoRegistro = 1;
     }
 
     @Override
     public String serializeExpecific() {
         return cuenta
                 + descripcionCuenta
-                + tipoImporte
-                + referenciaDocumento
+                //+ tipoImporte
+                //+ referenciaDocumento
                 + lineaApunte
                 + descripcionApunte
-                + String.format("%+10.2f", importe)
+                + importe
                 + String.join("", Collections.nCopies(137, " "))
-                + asientoNomina
-                + registroAnalitico
+                //+ asientoNomina
+                //+ registroAnalitico
                 + String.join("", Collections.nCopies(256, " "))
                 + moneda;
     }
