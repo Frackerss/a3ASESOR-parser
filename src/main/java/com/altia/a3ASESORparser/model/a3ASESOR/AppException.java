@@ -1,4 +1,4 @@
-package com.altia.a3ASESORparser.model;
+package com.altia.a3ASESORparser.model.a3ASESOR;
 
 public class AppException extends RuntimeException {
 

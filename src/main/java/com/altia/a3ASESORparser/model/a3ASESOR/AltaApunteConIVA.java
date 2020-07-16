@@ -1,5 +1,6 @@
-package com.altia.a3ASESORparser.model;
+package com.altia.a3ASESORparser.model.a3ASESOR;
 
+import com.altia.a3ASESORparser.service.SerializerUtils;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -9,7 +10,7 @@ import java.util.Collections;
 @Data
 public class AltaApunteConIVA extends Registro {
 
-    private String cuenta;
+    private int cuenta;
     private String descripcionCuenta;
     private TipoFactura tipoFactura;
     private int numeroFactura;
@@ -34,21 +35,21 @@ public class AltaApunteConIVA extends Registro {
 
     @Override
     public String serializeExpecific() {
-        return cuenta
-                + descripcionCuenta
+        return SerializerUtils.serialize(SerializerUtils.serialize(cuenta, 6), 12)
+                + SerializerUtils.serialize(descripcionCuenta, 30)
                 + tipoFactura
-                + numeroFactura
+                + SerializerUtils.serialize(numeroFactura, 10)
                 + lineaApunte
-                + descripcionApunte
-                + importe
+                + SerializerUtils.serialize(descripcionApunte, 30)
+                + SerializerUtils.serialize(importe, 10, 2)
                 + String.join("", Collections.nCopies(137, " "))
-                + nifCliente
-                + nombreCliente
-                + codigoPostal
+                + SerializerUtils.serialize(nifCliente, 14)
+                + SerializerUtils.serialize(nombreCliente, 40)
+                + SerializerUtils.serialize(codigoPostal, 5)
                 + String.join("", Collections.nCopies(256, " "))
-                + fechaOperacion
-                + fechaFactura
-                + numeroFacturaAmpliado
+                + SerializerUtils.serialize(fechaOperacion, 8)
+                + SerializerUtils.serialize(fechaFactura, 8)
+                + SerializerUtils.serialize(numeroFacturaAmpliado, 60)
                 + moneda;
     }
 }

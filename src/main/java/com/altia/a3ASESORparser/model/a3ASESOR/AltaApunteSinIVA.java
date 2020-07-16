@@ -1,11 +1,8 @@
-package com.altia.a3ASESORparser.model;
+package com.altia.a3ASESORparser.model.a3ASESOR;
 
 import com.altia.a3ASESORparser.service.SerializerUtils;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-
-import javax.validation.constraints.Size;
-import java.util.Collections;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -16,7 +13,6 @@ public class AltaApunteSinIVA extends Registro {
     private TipoImporte tipoImporte;
     private String referenciaDocumento;
     private LineaApunte lineaApunte;
-    @Size(max = 30)
     private String descripcionApunte;
     private double importe;
     //reserva

@@ -1,7 +1,7 @@
 package com.altia.a3ASESORparser.service;
 
-import com.altia.a3ASESORparser.model.AppException;
-import com.altia.a3ASESORparser.model.Registro;
+import com.altia.a3ASESORparser.model.a3ASESOR.AppException;
+import com.altia.a3ASESORparser.model.a3ASESOR.Registro;
 import org.springframework.stereotype.Service;
 
 import java.io.*;

@@ -1,4 +1,4 @@
-package com.altia.a3ASESORparser.model;
+package com.altia.a3ASESORparser.model.a3ASESOR;
 
 import com.altia.a3ASESORparser.service.SerializerUtils;
 import lombok.Data;

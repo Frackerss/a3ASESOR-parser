@@ -1,6 +1,8 @@
 package com.altia.a3ASESORparser.controller;
 
 import com.altia.a3ASESORparser.model.a3ASESOR.Registro;
+import com.altia.a3ASESORparser.model.pizza.Order;
+import com.altia.a3ASESORparser.service.OrderParser;
 import com.altia.a3ASESORparser.service.Parser;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -19,19 +21,19 @@ import java.util.List;
 @RestController
 @RequestMapping("/parser")
 @RequiredArgsConstructor
-public class ParserController {
+public class OrderController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ParserController.class);
 
-    private final Parser service;
+    private final OrderParser service;
 
     @PostMapping(value = {"", "/"}, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public ResponseEntity<String> parse(List<Registro> registros) {
+    public ResponseEntity<String> parse(List<Order> orders) {
 
-        LOGGER.info(">>Init parser {}", registros);
-        service.parse(registros);
-        LOGGER.info(">>End parser {}", registros);
+        LOGGER.info(">>Init parser {}", orders);
+        service.parse(orders);
+        LOGGER.info(">>End parser {}", orders);
         return ResponseEntity.ok("Peticion parseada correctamente.");
     }
 
