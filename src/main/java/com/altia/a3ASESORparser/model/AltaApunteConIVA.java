@@ -1,9 +1,11 @@
 package com.altia.a3ASESORparser.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.Collections;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 public class AltaApunteConIVA extends Registro {
 
@@ -34,15 +36,19 @@ public class AltaApunteConIVA extends Registro {
     public String serializeExpecific() {
         return cuenta
                 + descripcionCuenta
-                //+ tipoImporte
-                //+ referenciaDocumento
+                + tipoFactura
+                + numeroFactura
                 + lineaApunte
                 + descripcionApunte
                 + importe
                 + String.join("", Collections.nCopies(137, " "))
-                //+ asientoNomina
-                //+ registroAnalitico
+                + nifCliente
+                + nombreCliente
+                + codigoPostal
                 + String.join("", Collections.nCopies(256, " "))
+                + fechaOperacion
+                + fechaFactura
+                + numeroFacturaAmpliado
                 + moneda;
     }
 }

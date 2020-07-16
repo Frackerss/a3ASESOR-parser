@@ -1,22 +1,22 @@
 package com.altia.a3ASESORparser.model;
 
+import com.altia.a3ASESORparser.service.SerializerUtils;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.validation.constraints.Size;
 import java.util.Collections;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 public class AltaApunteSinIVA extends Registro {
 
-    @Size(min=6, max=12)
     private String cuenta;
-    @Size(max=30)
     private String descripcionCuenta;
     private TipoImporte tipoImporte;
-    @Size(max=10)
     private String referenciaDocumento;
     private LineaApunte lineaApunte;
-    @Size(max=30)
+    @Size(max = 30)
     private String descripcionApunte;
     private double importe;
     //reserva
@@ -32,17 +32,17 @@ public class AltaApunteSinIVA extends Registro {
 
     @Override
     public String serializeExpecific() {
-        return cuenta
-                + descripcionCuenta
+        return SerializerUtils.serialize(SerializerUtils.serialize(cuenta, 6), 12)
+                + SerializerUtils.serialize(descripcionCuenta, 30)
                 + tipoImporte
-                + referenciaDocumento
+                + SerializerUtils.serialize(referenciaDocumento, 10)
                 + lineaApunte
-                + descripcionApunte
-                + String.format("%+10.2f", importe)
-                + String.join("", Collections.nCopies(137, " "))
-                + asientoNomina
-                + registroAnalitico
-                + String.join("", Collections.nCopies(256, " "))
+                + SerializerUtils.serialize(descripcionApunte, 10)
+                + SerializerUtils.serialize(importe, 10, 2)
+                + SerializerUtils.reserva()
+                + SerializerUtils.serialize(asientoNomina)
+                + SerializerUtils.serialize(registroAnalitico)
+                + SerializerUtils.reserva()
                 + moneda;
     }
 }
