@@ -12,7 +12,7 @@ public class SerializerUtils {
     }
 
     public static String serialize(final String inputString, final int length) {
-        return String.format("%1$" + length + "s", inputString);
+        return String.format("%" + length + "." + length + "s", inputString);
     }
 
     public static String serialize(final int inputInt, final int length) {
